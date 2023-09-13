@@ -1,10 +1,12 @@
 package com.example.belajarrecycleview.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.belajarrecycleview.DetailsHeroActivity
 import com.example.belajarrecycleview.databinding.ActivityMainBinding
 import com.example.belajarrecycleview.databinding.ItemViewBinding
 import com.example.belajarrecycleview.model.dataHeroes
@@ -34,7 +36,9 @@ class heroAdapter (
         holder.binding.tvName.text = hero.name
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "Kamu memilih ${hero.name}", Toast.LENGTH_SHORT).show()
+           val intent = Intent(holder.itemView.context, DetailsHeroActivity::class.java)
+            intent.putExtra("DATA", hero)
+            holder.itemView.context.startActivity(intent)
         }
 
     }
